@@ -1,0 +1,46 @@
+@model IEnumerable<PhotoBoom.Models.Gallery>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="row justify-content-md-center">
+    <h1>My Photos</h1>
+</div>
+<div class="row justify-content-md-center">
+       
+       
+        @if (Model.Count()>0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mt-2">
+                    <div class="card">
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            <img class="w-75" style="height:300px"  src="gallery/@Html.DisplayFor(modelItem => item.ImagePath)"
+                        alt="@Html.DisplayFor(modelItem => item.Title)">
+                        </a>
+
+                    </div>
+                </div>
+            }
+        }
+        else{
+            <h2>You don't have any photos yet ;(</h2>
+        }
+        
+</div>
+ 
+        <div class="row justify-content-md-center mt-4">
+            <a asp-action="Create" class="AddPhoto">
+                Add Photo 
+            </a>
+        </div>
+
+
+</div>
+
+</tbody>
+</table>
